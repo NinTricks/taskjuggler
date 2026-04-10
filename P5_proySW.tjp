@@ -6,7 +6,7 @@
  */
  #test actions push
 
-project pSix "Web Game"  2025-12-15 +5m {
+project pSix "Web Game"  2025-12-15 +7m {
   # Set the default time zone for the project. If not specified, UTC
   # is used.
   timezone "Europe/Paris"
@@ -202,9 +202,9 @@ task WMGame "Web & Mobile Game" {
       allocate boss
       allocate dev2
       actual:effort 20d
+      actual:start 2026-05-15
       depends WMGame.tmobF
       depends WMGame.tcloud
-      actual:start 2026-05-15
       }
 
     
