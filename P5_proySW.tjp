@@ -4,6 +4,7 @@
  * It is based on the Tutorial project offered by TaskJuggler and maintains 
  * some elements of it
  */
+ #test actions push
 
 project pSix "Web Game"  2025-12-15 +5m {
   # Set the default time zone for the project. If not specified, UTC
