@@ -192,7 +192,7 @@ task WMGame "Web & Mobile Game" {
       journalentry 2026-04-10 "Unexpected issues" {
         author dev1
         alert yellow
-        summary "Docker is not working properly with the network. Estimated delay: 1-2 days."
+        summary "Kubernetes configuration is taking longer than expected due to networking policies. Adjusting internal port mappings. Estimated delay: 1-2 days."
       }
     }
     task tcloudSmoke "Smoke Tests on Cloud" {
@@ -280,6 +280,12 @@ textreport frame "" {
     center '<[report id="overview"]>'
   }
   
+  textreport "InitialPlan" {
+    formats html
+    title "Initial Plan"
+    center '<[report id="initialPlan"]>'
+  }
+
   textreport "Status" {
     formats html
     center -8<-
@@ -324,6 +330,20 @@ taskreport overview "" {
   hideresource @all
   balance cost rev
   caption 'All effort values are in man days.'
+}
+
+# Initial plan report showing the baseline scenario (plan).
+taskreport initialPlan "" {
+  scenarios plan
+  headline "Initial Project Plan (Baseline)"
+  columns bsi { title 'WBS' },
+          name, start, end, effort, cost,
+          revenue, chart { ${TaskTip} }
+  timeformat "%a %Y-%m-%d"
+  loadunit days
+  hideresource @all
+  balance cost rev
+  caption 'All effort values are in man days. Baseline scenario with no actual data.'
 }
 
 
