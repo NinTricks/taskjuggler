@@ -69,6 +69,10 @@ resource dev2 "Samantha Müller" {
 resource dev3 "Peter Green" {
   email "kkk@unizar.es"
 }
+resource dev4 "Mario Casado" {
+  email "844699@unizar.es"
+  limits { dailymax 4h }
+}
 
 # Now we specify the work packages. The whole project is described as
 # a task that contains subtasks. These subtasks are then broken down
@@ -101,7 +105,7 @@ task WMGame "Web & Mobile Game" {
     task tBEd "Back End General Design" {
       # The effort to finish this task is 5 man-days.
       effort 5d
-      allocate dev1
+      allocate dev1, dev4
     }
     task tlogic "Game logic" {
       effort 12d
@@ -116,7 +120,7 @@ task WMGame "Web & Mobile Game" {
     }
     task tbackDev "Back development" {
       effort 20d
-      allocate dev1, dev2
+      allocate dev1, dev2, dev4
       depends WMGame.tback.tlogic
     }
   }
@@ -192,7 +196,7 @@ task WMGame "Web & Mobile Game" {
       journalentry 2026-04-10 "Unexpected issues" {
         author dev1
         alert yellow
-        summary "Kubernetes configuration is taking longer than expected due to networking policies. Adjusting internal port mappings. Estimated delay: 1-2 days."
+        summary "Docker is not working properly with the network. Estimated delay: 1-2 days."
       }
     }
     task tcloudSmoke "Smoke Tests on Cloud" {
