@@ -204,6 +204,7 @@ task WMGame "Web & Mobile Game" {
       actual:effort 20d
       depends WMGame.tmobF
       depends WMGame.tcloud
+      actual:start 2026-05-15
       }
 
     
